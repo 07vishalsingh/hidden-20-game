@@ -1,0 +1,187 @@
+/* 1. GLOBAL RESET & VARIABLES */
+:root {
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --card-bg: #34495e;
+    --box-bg: #ecf0f1;
+    --box-text: #2c3e50;
+}
+
+/* DARK MODE COLORS */
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f1f1f1;
+    --card-bg: #2d2d2d;
+    --box-bg: #444;
+    --box-text: #fff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* 2. RESPONSIVE CONTAINER */
+.game-container {
+    text-align: center;
+    width: 90%; /* Responsive Width for mobile */
+    max-width: 400px; /* Limit max size for desktop */
+    padding: 10px;
+}
+
+/* THEME BUTTON (Top Right) */
+.theme-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* STATS & TIMER */
+.stats-bar {
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-green { color: #2ecc71; }
+.text-red { color: #e74c3c; }
+.text-gray { color: #95a5a6; } /* Gray for Draws */
+
+.timer-box {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #f1c40f;
+}
+
+/* SCOREBOARD */
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.player-card {
+    background: var(--card-bg);
+    padding: 15px;
+    width: 30%;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+/* Highlight whose turn it is */
+.player-card.active {
+    border-color: #f1c40f;
+    transform: scale(1.05);
+}
+
+.score { font-size: 28px; font-weight: bold; }
+
+/* THE GRID (6 Boxes) */
+.grid-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Columns */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.box {
+    background: var(--box-bg);
+    color: var(--box-text);
+    height: 100px; /* Fixed height */
+    border-radius: 15px;
+    border: 4px solid #bdc3c7;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+.box:active { transform: scale(0.95); }
+
+/* ANIMATION: SHAKE 🫨 */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-5deg); }
+    50% { transform: translateX(5px) rotate(5deg); }
+    75% { transform: translateX(-5px) rotate(-5deg); }
+    100% { transform: translateX(0); }
+}
+
+.box.shake-active {
+    animation: shake 0.4s ease-in-out;
+    background-color: #ffcccc; /* Red flash effect */
+}
+
+/* Color classes for numbers */
+.box.revealed { background: #fff; } /* Override background when showing number */
+.num-pos { color: #2ecc71; }
+.num-neg { color: #e74c3c; }
+.num-neu { color: #3498db; }
+
+.game-log {
+    height: 30px;
+    font-size: 14px;
+    color: #bdc3c7;
+    margin-bottom: 10px;
+}
+
+/* MODE SELECTION & BUTTONS */
+.mode-box {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.mode-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.mode-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}

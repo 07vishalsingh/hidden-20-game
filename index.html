@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden 20 Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="sound-click" src="click.mp3"></audio>
+
+<audio id="sound-win" src="win.mp3"></audio>
+
+<audio id="sound-lose" src="lose.mp3"></audio>
+    <div class="game-container">
+        
+        <h1>Hidden 20 🎲</h1>
+        <div class="stats-bar">
+            <span>Games: <b id="stat-total">0</b></span>
+            <span class="text-green">Wins: <b id="stat-wins">0</b></span>
+            <span class="text-red">Losses: <b id="stat-losses">0</b></span>
+            <span class="text-gray">Draws: <b id="stat-draw">0</b></span>
+        </div>
+
+        <div id="mode-selection" class="mode-box">
+            <h3>Choose Game Mode:</h3>
+            <button class="mode-btn" onclick="startGame('cpu')">👤 You VS 🤖 CPU</button>
+            <button class="mode-btn" onclick="startGame('friend')">👤 You VS 👤 Friend</button>
+        </div>
+
+        <div id="game-area" style="display: none;">
+            
+            <div class="timer-box">
+                Time Left: <span id="timer">05:00</span>
+            </div>
+
+            <div class="scoreboard">
+                <div class="player-card active" id="p1-card">
+                    <h3>P1 (You)</h3>
+                    <div class="score" id="score-p1">0</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="player-card" id="p2-card">
+                    <h3 id="p2-name">CPU</h3> <div class="score" id="score-p2">0</div>
+                </div>
+            </div>
+
+            <div class="grid-board">
+                <div class="box" onclick="handleClick(0)"></div>
+                <div class="box" onclick="handleClick(1)"></div>
+                <div class="box" onclick="handleClick(2)"></div>
+                <div class="box" onclick="handleClick(3)"></div>
+                <div class="box" onclick="handleClick(4)"></div>
+                <div class="box" onclick="handleClick(5)"></div>
+            </div>
+
+            <div class="game-log" id="game-log">Click a box to start!</div>
+            
+            <button class="reset-btn" onclick="showModeSelection()">Change Mode 🔄</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
